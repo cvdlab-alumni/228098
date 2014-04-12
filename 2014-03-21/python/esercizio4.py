@@ -95,7 +95,7 @@ scala3D0=STRUCT([T([1,2,3])([0.2*(x-1),-0.2*(x-1),0])(gradino3D) for x in range(
 scala3D=STRUCT([scala3D0,corrimano3D,T([1,2,3])([0,0,92.8])(corrimano3D)])
 scalaEst=T([1,2,3])([-20,73,-0.2])(MAP([S3,S1,S2])(scala3D))
 
-scalaNord=T([1,2,3])([0,53-,0])(R([1,2])(-PI/2)(scalaEst))
+scalaNord=T([1,2,3])([0,53,0])(R([1,2])(-PI/2)(scalaEst))
 scalaSud=T([1,2,3])([53,0,0])(R([1,2])(PI/2)(scalaEst))
 scalaOvest=T([1,2,3])([53,53,0])(R([1,2])(PI)(scalaEst))
 
