@@ -45,7 +45,7 @@ windows01=STRUCT([T([1])([5.7+(i*5.8)])(window0) for i in range(7)])
 
 windowsl01=STRUCT([T([1,2])([5.7+(i*5.8),10])(windowl1) for i in range(7)])
 windows01=STRUCT([T([2])([(i*9)])(windowsl01) for i in range(5)])
-windows00=STRUCT([T([1])([(i*5.8)+5.7])(window0) for i in range(7)])
+windows00=STRUCT([T([1])([(i*5.8)+5.7)(window0) for i in range(7)])
 plane01=DIFFERENCE([MKPOL([pts1,cells0,pols0]), windows00])
 plane1=DIFFERENCE([plane01, windows01])
 plane1=STRUCT([COLOR(GREEN)(plane1),COLOR(BLUE)(windows01),COLOR(BLUE)(windows00)])
@@ -53,7 +53,7 @@ plane1=STRUCT([COLOR(GREEN)(plane1),COLOR(BLUE)(windows01),COLOR(BLUE)(windows00
 #plane1=STRUCT([plane1,COLOR(BLUE)(windows01)])
 
 
-#VIEW(plane1)
+VIEW(plane1)
 n=STRUCT([T([1,2,3])([0,0,53])(PROD([plane, Q(-0.4)])),T([1,2,3])([0,0,46.8])(PROD([plane1, Q(-0.3)]))])
 s=STRUCT([T([1,2,3])([0,0,0])(PROD([plane, Q(0.4)])),T([1,2,3])([0,0,6.2])(PROD([plane1, Q(0.3)]))])
 
