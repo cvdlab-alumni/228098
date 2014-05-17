@@ -12,14 +12,14 @@
 <h4>Esercizio 1</h4>
 <a href="python/esercizio1.py">Esercizio 1</a>
 Questo esercizio è stato sviluppato componendo le varie parti dell'appartamento create singolarmente mediante la libreria larcc, come richiesto 
-<img src="images/esercizio1-fig1.PNG" width="350" height="350" />
-<img src="images/esercizio1-fig2.PNG" width="350" height="350" />
-<img src="images/esercizio1-fig3.PNG" width="350" height="350" />
-<img src="images/esercizio1-fig4.PNG" width="350" height="350" />
+<img src="images/esercizio1-fig1.png" width="350" height="350" />
+<img src="images/esercizio1-fig2.png" width="350" height="350" />
+<img src="images/esercizio1-fig3.png" width="350" height="350" />
+<img src="images/esercizio1-fig4.png" width="350" height="350" />
 <h4>Esercizio 2</h4>
 <a href="python/esercizio2.py">Esercizio 2</a>
 Per questo esercizio si è partiti dal precedente, praticamente rialzando di ulteriori 2 piani la parazzina e aggiungendo un paravento curvo vicino agli ingressi.
-<img src="images/esercizio2-fig1.PNG" width="350" height="350" />
+<img src="images/esercizio2-fig1.png" width="350" height="350" />
 
 <h4>Esercizio 3</h4>
 Per questo esercizio sono state scritte 2 funzioni:
