@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Grafica Computazionale Homework 2</title>
+<title>Grafica Computazionale Homework 3</title>
 </head>
 <body>
 
@@ -26,7 +26,11 @@ Per questo esercizio sono state scritte 2 funzioni:
 mergingNumberingElimination(blocchi,merge,modifica)
 mergingNumberingEliminationAlt(blocchi,merge,modifica,colorefont,sizefont,vedi)
 
-che automatizzano la procedura fusione-numerazione-eliminazione vista nel file di test della libreria larcc modulo sysml.
+che automatizzano la procedura fusione-numerazione-eliminazione vista nel file di test della libreria sysml.
 La prima funzione non è altro che la seconda con colorefont=CYAN, sizefont=1 e vedi=True.  
+
+<h4>Esercizio 4</h4>
+
+
 </body>
 </html>
