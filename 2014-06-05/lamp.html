@@ -230,16 +230,14 @@
 		luci.add(controls, 'switch').onChange(function(value){ 
 			   if(!controls.switch){
                     spotLight.intensity = 0;
-                    spotLight.shadowDarkness = 0;
-                    pointLight.intensity=0;
-                    pointLight.shadowDarkness = 0;
+					spotLight.shadowDarkness = 0;
+                    
                 }
                 else
                 {
-                    spotLight.intensity = spotLightIntensity;
-                    spotLight.shadowDarkness = spotLightShadowDarkness;
-                    pointLight.intensity = pointLightIntensity;
-                    pointLight.shadowDarkness = pointLightShadowDarkness;
+                    spotLight.intensity = 50;
+					spotLight.shadowDarkness = 1;
+					
                 }
 	    }); 
   		luci.add(controls, 'directionalLight').onChange(function(value){ 
@@ -260,19 +258,37 @@
 		
 		
 		//movimenti
+		
+			
+		
+		
+		
+		
+		var r6 = new TWEEN.Tween(joint2.rotation)
+            .to({x: 0},1000) 
+			
+		var r4 = new TWEEN.Tween(joint1.rotation)
+            .to({y: 0},1000)
+			.chain(r6)
+		var r5 = new TWEEN.Tween(joint2.rotation)
+            .to({x: 0},1000)   
+		.chain(r6)  
+		var m2 = new TWEEN.Tween(base.position)
+            .to({x:0,y:0,z:2},1000) 		
+			.delay(500)
+			.chain(r5) 
 		var m1 = new TWEEN.Tween(base.position)
-            .to({x:-50,y:50,z:2},5000) ;
-		controls.x=-50;
-		controls.y=50;
+            .to({x:-50,y:50,z:2},1000)			
+			.chain(m2)
 		var r1 = new TWEEN.Tween(joint1.rotation)
             .to({y: Math.PI/4},1000)
-			.chain(m1);
+			.chain(m1)
 		var r2 = new TWEEN.Tween(joint2.rotation)
             .to({x: Math.PI/2},1000)   
-			.chain(r1)	
+			.chain(r1)
 		var r3 = new TWEEN.Tween(joint2.rotation)
             .to({x: Math.PI/2},1000)   
-			.chain(r2)		        
+			.chain(r2)			        
             .start();
 
             render();
