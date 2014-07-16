@@ -9,7 +9,7 @@ var mat_floor_soffitto_esterno = createMaterial("textures/cucina/soffitto.jpg");
 
 var mat_wall_cucina = createMaterial("./textures/cucina/muro.jpg");
 var texture_wall_cucina = mat_wall_cucina.map;
-var mat_wall_salone = createMaterial("textures/salone/muro.png");
+var mat_wall_salone = createMaterial("textures/salone/muro.jpg");
 var texture_wall_salone = mat_wall_salone.map;
 var mat_wall_camera = createMaterial("textures/camera/muro.jpg");
 var texture_wall_camera = mat_wall_camera.map;
