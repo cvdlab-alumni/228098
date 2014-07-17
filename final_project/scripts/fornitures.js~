@@ -239,7 +239,7 @@ function createLamp(radius_lampShade, lColor){
  	lampShade.target = t;
 
  	toIntersect.push(lampShade);
- 	lampShade.on=false;
+ 	lampShade.on=true;
 	lampShade.action=function(){		
 		if(!this.on){
 			this.children[0].intensity=1;
