@@ -2,4 +2,4 @@
 ============================================
 Grafica Computazionale 2013/2014
 
-[Vedi Progetto Finale](http://jhard.altervista.org/)
+[Vedi Progetto Finale](http://jhard.altervista.org/grafica/)
