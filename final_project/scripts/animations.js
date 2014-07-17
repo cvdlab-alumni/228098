@@ -92,15 +92,11 @@ function implode(){
 		.start();
 	}
 }
-function manualTour(){
-	controls = new THREE.PointerLockControls(camera);
-scene.add(controls.getObject());
-	var controls =new THREE.FirstPersonControls(camera,this.renderer.domElement);	
-}
+
 function autoTour(){
 	implode();
 	trackballControls.enabled=false;
-	
+	interact=0;
 	camera.up = new THREE.Vector3(0,1,0);
 	camera.position.set(44,55,250);
 	camera.rotation.set(0,0,0);
@@ -126,17 +122,19 @@ function autoTour(){
 	.to({   x:50, z:0}, 1000)
 	.chain(rotatecamera53);
 	
+	var chiudiPortaScaleMaster = new TWEEN.Tween(master.porta_scale.rotation)
+	.to({z: Math.PI/2}, 500)
+	.chain(movecamera51);
+	
 	var rotatecamera52 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI }, 1000)
-	.chain(movecamera51)
+	.chain(chiudiPortaScaleMaster)
 	
-	var chiudiPortaScaleMaster = new TWEEN.Tween(master.porta_scale.rotation)
-	.to({z: 0}, 500)
-	.chain(rotatecamera52);
+	
 	
 	var movecamera50 = new TWEEN.Tween(camera.position)
 	.to({   x:50, y:10}, 1000)
-	.chain(chiudiPortaScaleMaster);
+	.chain(rotatecamera52);
 	
 	var rotatecamera51 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI*3/2 }, 1000)
@@ -232,9 +230,12 @@ function autoTour(){
 	.to({  y: 0 }, 1000)
 	.chain(movecamera41)
 	
+	var chiudiPortacamera2Primo = new TWEEN.Tween(primo.porta_camera2.rotation)
+	.to({z: Math.PI*3/2}, 500)
+	
 	var movecamera40 = new TWEEN.Tween(camera.position)
 	.to({  x:50}, 1000)
-	.chain(rotatecamera43);
+	.chain(rotatecamera43,chiudiPortacamera2Primo);
 	
 	var rotatecamera42 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI/2 }, 1000)
@@ -249,16 +250,26 @@ function autoTour(){
 	.to({z: -Math.PI/2}, 500)	
 	.chain(chiudiFinestracamera2Primo1)
 	
+	var chiudiPortacamera1Primo = new TWEEN.Tween(primo.porta_camera1.rotation)
+	.to({z: -Math.PI/2}, 500)
+	
 	var rotatecamera41 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI }, 1000)
 	.chain(apriFinestracamera2Primo1)
 	
+	
+	
+	
 	var movecamera39 = new TWEEN.Tween(camera.position)
 	.to({  x:70}, 1000)
-	.chain(rotatecamera41);
+	.chain(rotatecamera41,chiudiPortacamera1Primo);
+	
+	
+	
+	
 	
 	var apriPortacamera2Primo1 = new TWEEN.Tween(primo.porta_camera2.rotation)
-	.to({z: Math.PI/2}, 500)
+	.to({z: 2*Math.PI}, 500)
 	//.chain(movecamera39)
 	
 	var rotatecamera40 = new TWEEN.Tween(camera.rotation)
@@ -283,9 +294,14 @@ function autoTour(){
 	.to({  x:30}, 1000)
 	.chain(rotatecamera39);
 	
+	
+	var apriPortacamera1Primo = new TWEEN.Tween(primo.porta_camera1.rotation)
+	.to({z: -Math.PI}, 500)
+	.chain(movecamera38)
+	
 	var rotatecamera38 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI/2 }, 1000)
-	.chain(movecamera38)
+	.chain(apriPortacamera1Primo)
 	
 	
 	
@@ -299,9 +315,14 @@ function autoTour(){
 	.to({  y: Math.PI }, 1000)
 	.chain(movecamera37)
 	
+	var chiudiPortaCamera3Primo= new TWEEN.Tween(primo.porta_camera3.rotation)
+	.to({z: -Math.PI/2}, 500)
+	.chain(rotatecamera37)
+	
+	
 	var movecamera36 = new TWEEN.Tween(camera.position)
 	.to({  x:50}, 1000)
-	.chain(rotatecamera37);
+	.chain(chiudiPortaCamera3Primo);
 	
 	var rotatecamera36 = new TWEEN.Tween(camera.rotation)
 	.to({  y: -Math.PI/2 }, 1000)
@@ -331,10 +352,7 @@ function autoTour(){
 	.to({  z:-140}, 1000)
 	.chain(rotatecamera32);
 	
-	/*var apriFinestraSaloneTerra2 = new TWEEN.Tween(terra.finestra_camera_b.rotation)
-	.to({z: Math.PI/2}, 500)
-	//.chain(apriFinestraSaloneTerra2)*/
-	
+		
 	var apriFinestracamera3Primo1 = new TWEEN.Tween(primo.finestra_camera3_a.rotation)
 	.to({z: -Math.PI/2}, 500)
 	.chain(movecamera34)
@@ -347,13 +365,13 @@ function autoTour(){
 	.to({  x:20}, 1000)
 	.chain(rotatecamera31);
 	
-	/*var apriPortacamera3Primo = new TWEEN.Tween(primo.porta_camera3.rotation)
-	.to({z: Math.PI/2}, 500)	
-	.chain(chiudiFinestraBagnoTerra)*/
+	var apriPortacamera3Primo = new TWEEN.Tween(primo.porta_camera3.rotation)
+	.to({z: -Math.PI}, 500)	
+	.chain(movecamera33)
 	
 	var rotatecamera30 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI/2 }, 1000)
-	.chain(movecamera33);
+	.chain(apriPortacamera3Primo);
 	
 	var movecamera32 = new TWEEN.Tween(camera.position)
 	.to({ z:-95}, 1000)
@@ -404,9 +422,12 @@ function autoTour(){
 	.to({  y: 0 }, 1000)
 	.chain(movecamera26)
 	
+	var chiudiPortaBagnoTerra = new TWEEN.Tween(terra.porta_bagno.rotation)
+	.to({z: Math.PI*3/2}, 500)
+	
 	var movecamera25 = new TWEEN.Tween(camera.position)
 	.to({  x:50}, 1000)
-	.chain(rotatecamera25);
+	.chain(rotatecamera25,chiudiPortaBagnoTerra);
 	
 	var rotatecamera25 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI/2 }, 1000)
@@ -425,17 +446,25 @@ function autoTour(){
 	.to({  y: Math.PI }, 1000)
 	.chain(apriFinestraBagnoTerra)
 	
-	var movecamera24 = new TWEEN.Tween(camera.position)
-	.to({  x:70}, 1000)
+	var chiudiPortaCucinaTerra = new TWEEN.Tween(terra.porta_cucina.rotation)
+	.to({z: -Math.PI/2}, 500)
 	.chain(rotatecamera24);
 	
+	var movecamera24 = new TWEEN.Tween(camera.position)
+	.to({  x:70}, 1000)
+	.chain(chiudiPortaCucinaTerra);
+	
 	var apriPortaBagnoTerra = new TWEEN.Tween(terra.porta_bagno.rotation)
-	.to({z: Math.PI/2}, 500)
-	//.chain(movecamera24)
+	.to({z:2*Math.PI }, 500)
+	.chain(movecamera24)
+	
+	
+	
+	
 	
 	var rotatecamera23 = new TWEEN.Tween(camera.rotation)
 	.to({  y: -Math.PI/2 }, 3000)
-	.chain(movecamera24,apriPortaBagnoTerra)
+	.chain(apriPortaBagnoTerra)
 	
 	var chiudiFinestraCucinaTerra1 = new TWEEN.Tween(terra.finestra_cucina_a.rotation)
 	.to({z: 0}, 500)
@@ -469,9 +498,16 @@ function autoTour(){
 	.to({  x:30}, 1000)
 	.chain(rotatecamera20);
 	
+	
+	var apriPortaCucinaTerra = new TWEEN.Tween(terra.porta_cucina.rotation)
+	.to({z: -Math.PI}, 500)
+	.chain(movecamera21)
+	
+	
+	
 	var rotatecamera19 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI/2 }, 1000)
-	.chain(movecamera21)
+	.chain(apriPortaCucinaTerra)
 	
 	var movecamera20 = new TWEEN.Tween(camera.position)
 	.to({  z:-50}, 1000)
@@ -579,13 +615,13 @@ function autoTour(){
 	.to({  x:40 }, 1000)
 	.chain(movecamera10);
 	
-	/*var apriPortaScaleMaster = new TWEEN.Tween(master.porta_scale.rotation)
-	.to({z: -Math.PI/2}, 500)
-	.chain(movecamera9);*/
+	var apriPortaScaleMaster = new TWEEN.Tween(master.porta_scale.rotation)
+	.to({z: 0}, 500)
+	.chain(movecamera10);
 	
 	var rotatecamera8 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI/2 }, 1000)
-	.chain(movecamera9);
+	.chain(apriPortaScaleMaster);
 	
 	var movecamera8 = new TWEEN.Tween(camera.position)
 	.to({  z:-60 }, 1000)
@@ -637,9 +673,13 @@ function autoTour(){
 	.to({  y: Math.PI }, 1000)
 	.chain(apriFinestraStudioMaster);
 	
+	var chiudiPortaCameraMaster = new TWEEN.Tween(master.porta_camera.rotation)
+	.to({z: -Math.PI/2}, 500)
+	.chain(rotatecamera4);
+	
 	var movecamera4 = new TWEEN.Tween(camera.position)
 	.to({  x:60, }, 1000)
-	.chain(rotatecamera4);
+	.chain(chiudiPortaCameraMaster);
 	
 	var rotatecamera3 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI*3/2 }, 1000)
@@ -661,10 +701,15 @@ function autoTour(){
 	var movecamera3 = new TWEEN.Tween(camera.position)
 	.to({  x:30 }, 1000)
 	.chain(rotatecamera2);
-
+	
+	
+	var apriPortaCameraMaster = new TWEEN.Tween(master.porta_camera.rotation)
+	.to({z: -Math.PI}, 500)
+	.chain(movecamera3);
+	
     var rotatecamera1 = new TWEEN.Tween(camera.rotation)
 	.to({  y: Math.PI/2 }, 1000)	
-	.chain(movecamera3);
+	.chain(apriPortaCameraMaster);
 	
 	var movecamera2 = new TWEEN.Tween(camera.position)
 	.to({  x:50, z: -39 }, 1000)

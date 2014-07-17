@@ -5,18 +5,16 @@ var frameMaterial = new THREE.MeshLambertMaterial({map: telaio_texture});
 var porta_texture = THREE.ImageUtils.loadTexture("./textures/fornitures/porta.jpg");
 var portMaterial = new THREE.MeshLambertMaterial({map: porta_texture});
 
+var blind_texture = THREE.ImageUtils.loadTexture("./textures/fornitures/porta_blindata.jpg");
+var portBlindMaterial = new THREE.MeshLambertMaterial({map: blind_texture});
 
-
-
-function createBlindDoor(width, height, depth, reverse){
-	if(typeof(reverse)==='undefined'){
-		 reverse = 0;
-	}
-	var blind_texture = THREE.ImageUtils.loadTexture("./textures/fornitures/porta_blindata.jpg");
+function createBlindDoor(width, height, depth, invert){
+	if(typeof(invert)==='undefined'){
+		 invert = 0;
+	}	
 	var portGeometry = new THREE.BoxGeometry(width, depth, height);
-	var portMaterial = new THREE.MeshLambertMaterial({map: blind_texture});
 	
-	var port = new THREE.Mesh(portGeometry, portMaterial);
+	var port = new THREE.Mesh(portGeometry, portBlindMaterial);
 	var hook = new THREE.Object3D();
 	var door = new THREE.Object3D();
 	door.add(hook);
@@ -25,30 +23,34 @@ function createBlindDoor(width, height, depth, reverse){
 	toIntersect.push(port);
 	port.open=false;
 	port.action=function(){
-		if(!this.open){
-			if (reverse===1){
-				new TWEEN.Tween(this.parent.rotation)
-				.to({z: -Math.PI/2},1000)
-				.start();
+		if(interact){
+			if(!this.open){
+				if (invert===1){
+					new TWEEN.Tween(this.parent.rotation)
+					.to({z: -Math.PI/2},1000)
+					.start();
+				} else {
+					new TWEEN.Tween(this.parent.rotation)
+					.to({z: Math.PI/2},1000)
+					.start();
+				}
+				
+				this.open=true;
 			} else {
 				new TWEEN.Tween(this.parent.rotation)
-				.to({z: Math.PI/2},1000)
+				.to({z: 0},1000)
 				.start();
+				this.open=false;
 			}
-			
-			this.open=true;
-		} else {
-			new TWEEN.Tween(this.parent.rotation)
-			.to({z: 0},1000)
-			.start();
-			this.open=false;
 		}
 	}
 	return door;
 }
 
 function createDoor(width, height, depth, invert){
-	if(typeof(invert)==='undefined') invert = 0;
+	if(typeof(invert)==='undefined') {
+		invert = 0;
+	}
 	var portGeometry = new THREE.BoxGeometry(width, depth, height);
 	
 	var port = new THREE.Mesh(portGeometry, portMaterial);
@@ -60,23 +62,25 @@ function createDoor(width, height, depth, invert){
 	toIntersect.push(port);
 	port.open=false;
 	port.action=function(){
-		if(!this.open){
-			if (invert===1){
-				new TWEEN.Tween(this.parent.rotation)
-				.to({z: -Math.PI/2},1000)
-				.start();
+		if(interact){
+			if(!this.open){
+				if (invert===1){
+					new TWEEN.Tween(this.parent.rotation)
+					.to({z: -Math.PI/2},1000)
+					.start();
+				} else {
+					new TWEEN.Tween(this.parent.rotation)
+					.to({z: Math.PI/2},1000)
+					.start();
+				}
+				
+				this.open=true;
 			} else {
 				new TWEEN.Tween(this.parent.rotation)
-				.to({z: Math.PI/2},1000)
+				.to({z: 0},1000)
 				.start();
+				this.open=false;
 			}
-			
-			this.open=true;
-		} else {
-			new TWEEN.Tween(this.parent.rotation)
-			.to({z: 0},1000)
-			.start();
-			this.open=false;
 		}
 	}
 	return door;
@@ -91,71 +95,75 @@ function createDoubleWindow(width, height, depth){
 	var frame2 = new THREE.Mesh(frameGeometry1, frameMaterial);
 	var frame3 = new THREE.Mesh(frameGeometry2, frameMaterial);
 	var frame4 = new THREE.Mesh(frameGeometry2, frameMaterial);
-	var anta1 = new THREE.Object3D();
-	anta1.add(frame1);
-	anta1.add(frame2);
-	anta1.add(frame3);
-	anta1.add(frame4);
+	var telaio1 = new THREE.Object3D();
+	telaio1.add(frame1);
+	telaio1.add(frame2);
+	telaio1.add(frame3);
+	telaio1.add(frame4);
 
 	frame1.position.set(width/4,0,0.05);
 	frame2.position.set(width/4,0,(height-0.2+0.15));
 	frame3.position.set(0.05,0,(height/2));
 	frame4.position.set(-0.05+(width/2),0,(height/2));
 
-	anta2=anta1.clone();
+	telaio2=telaio1.clone();
 
 	hook1 = new THREE.Object3D();
 	hook2 = new THREE.Object3D();
 
 	windows.add(hook1);
-	hook1.add(anta1);
-	anta1.position.set(0,0,0);
+	hook1.add(telaio1);
+	telaio1.position.set(0,0,0);
 	
 	windows.add(hook2);
 	hook2.position.set(width,0,0);
-	hook2.add(anta2);
-	anta2.position.set(-width/2,0,0);
+	hook2.add(telaio2);
+	telaio2.position.set(-width/2,0,0);
 
-	var glass1 = new THREE.Mesh(new THREE.BoxGeometry((width/2)-0.2, 0.15, height-0.2), new THREE.MeshLambertMaterial({color: 0x012345, opacity: 0.5, transparent: true}));
-    anta1.add(glass1);
-    glass1.position.set(width/4,0,height/2);
+	var vetro1 = new THREE.Mesh(new THREE.BoxGeometry((width/2)-0.2, 0.15, height-0.2), new THREE.MeshLambertMaterial({color: 0x012345, opacity: 0.5, transparent: true}));
+    telaio1.add(vetro1);
+    vetro1.position.set(width/4,0,height/2);
 
-	var glass2 = new THREE.Mesh(new THREE.BoxGeometry((width/2)-0.2, 0.15, height-0.2), new THREE.MeshLambertMaterial({color: 0x012345, opacity: 0.5, transparent: true}));
-    anta2.add(glass2);
-    glass2.position.set(width/4,0,height/2); 
+	var vetro2 = new THREE.Mesh(new THREE.BoxGeometry((width/2)-0.2, 0.15, height-0.2), new THREE.MeshLambertMaterial({color: 0x012345, opacity: 0.5, transparent: true}));
+    telaio2.add(vetro2);
+    vetro2.position.set(width/4,0,height/2); 
 
-    toIntersect.push(glass1);
-    glass1.open=false;
-	glass1.action=function(){
-		if(!this.open){
-			new TWEEN.Tween(this.parent.parent.rotation)
-			.to({z: -Math.PI/2},1000)
-			.start();
-			this.open=true;
-		} else {
-			new TWEEN.Tween(this.parent.parent.rotation)
-			.to({z: 0},1000)
-			.start();
-			this.open=false;
+    toIntersect.push(vetro1);
+    vetro1.open=false;
+	vetro1.action=function(){
+		if(interact){
+			if(!this.open){
+				new TWEEN.Tween(this.parent.parent.rotation)
+				.to({z: -Math.PI/2},1000)
+				.start();
+				this.open=true;
+			} else {
+				new TWEEN.Tween(this.parent.parent.rotation)
+				.to({z: 0},1000)
+				.start();
+				this.open=false;
+			}
 		}
 	}
-	toIntersect.push(glass2);
-    glass2.open=false;
-	glass2.action=function(){
-		if(!this.open){
-			new TWEEN.Tween(this.parent.parent.rotation)
-			.to({z: Math.PI/2},1000)
-			.start();
-			this.open=true;
-		} else {
-			new TWEEN.Tween(this.parent.parent.rotation)
-			.to({z: 0},1000)
-			.start();
-			this.open=false;
+	toIntersect.push(vetro2);
+    vetro2.open=false;
+	vetro2.action=function(){
+		if(interact){
+			if(!this.open){
+				new TWEEN.Tween(this.parent.parent.rotation)
+				.to({z: Math.PI/2},1000)
+				.start();
+				this.open=true;
+			} else {
+				new TWEEN.Tween(this.parent.parent.rotation)
+				.to({z: 0},1000)
+				.start();
+				this.open=false;
+			}
 		}
 	}
-	windows.anta1=anta1;
-	windows.anta2=anta2;
+	windows.telaio1=telaio1;
+	windows.telaio2=telaio2;
     return windows;
 }
 
@@ -169,45 +177,47 @@ function createSingleWindow(width, height, depth){
 	var frame2 = new THREE.Mesh(frameGeometry1, frameMaterial);
 	var frame3 = new THREE.Mesh(frameGeometry2, frameMaterial);
 	var frame4 = new THREE.Mesh(frameGeometry2, frameMaterial);
-	var anta = new THREE.Object3D();
-	anta.add(frame1);
-	anta.add(frame2);
-	anta.add(frame3);
-	anta.add(frame4);
+	var telaio = new THREE.Object3D();
+	telaio.add(frame1);
+	telaio.add(frame2);
+	telaio.add(frame3);
+	telaio.add(frame4);
 
 	frame1.position.set(width/2,0,0.05);
 	frame2.position.set(width/2,0,(height-0.2+0.15));
 	frame3.position.set(0.05,0,(height/2));
 	frame4.position.set(-0.05+(width),0,(height/2));
 
-	var glass = new THREE.Mesh(new THREE.BoxGeometry((width)-0.2, 0.15, height-0.2), new THREE.MeshLambertMaterial({color: 0x012345, opacity: 0.5, transparent: true}));
-    anta.add(glass);
-    glass.position.set(width/2,0,height/2);
+	var vetro = new THREE.Mesh(new THREE.BoxGeometry((width)-0.2, 0.15, height-0.2), new THREE.MeshLambertMaterial({color: 0x012345, opacity: 0.5, transparent: true}));
+    telaio.add(vetro);
+    vetro.position.set(width/2,0,height/2);
 
-    toIntersect.push(glass);
-    glass.open=false;
-	glass.action=function(){
-		if(!this.open){
-			new TWEEN.Tween(this.parent.parent.rotation)
-			.to({z: -Math.PI/2},1000)
-			.start();
-			this.open=true;
-		} else {
-			new TWEEN.Tween(this.parent.parent.rotation)
-			.to({z: 0},1000)
-			.start();
-			this.open=false;
+    toIntersect.push(vetro);
+    vetro.open=false;
+	vetro.action=function(){
+		if(interact){
+			if(!this.open){
+				new TWEEN.Tween(this.parent.parent.rotation)
+				.to({z: -Math.PI/2},1000)
+				.start();
+				this.open=true;
+			} else {
+				new TWEEN.Tween(this.parent.parent.rotation)
+				.to({z: 0},1000)
+				.start();
+				this.open=false;
+			}
 		}
 	}
 
-	hook.add(anta);
-	windows.anta=anta;
+	hook.add(telaio);
+	windows.telaio=telaio;
 	return windows;
 }
 
 function createLamp(radius_lampShade, lColor){
 	var lampShadeGeometry = new THREE.SphereGeometry(radius_lampShade, 8, 8, 0, Math.PI, 0, Math.PI);
-    var lampShadeMaterial = new THREE.MeshPhongMaterial({ color: lColor , shading: THREE.SmoothShading, shininess: 30, metal: true});
+    var lampShadeMaterial = new THREE.MeshPhongMaterial({ color: lColor , shading: THREE.SmoothShading, shininess: 20});
     lampShadeMaterial.side = THREE.DoubleSide;
     var lampShade = new THREE.Mesh(lampShadeGeometry, lampShadeMaterial);
     lampShade.scale.z=0.5;
@@ -229,8 +239,8 @@ function createLamp(radius_lampShade, lColor){
  	lampShade.target = t;
 
  	toIntersect.push(lampShade);
- 	lampShade.on=false;
-	lampShade.action=function(){
+ 	lampShade.on=true;
+	lampShade.action=function(){		
 		if(!this.on){
 			this.children[0].intensity=1;
 			this.children[1].intensity=1;

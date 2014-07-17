@@ -7,7 +7,7 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
 
 camera.up = new THREE.Vector3(0,1,0);
-camera.position.set(44,55,250);
+camera.position.set(0,55,250);
 camera.lookAt(scene.position);
 
 document.addEventListener('mousedown', onDocumentMouseDown, false);
@@ -17,14 +17,14 @@ var toIntersect=[];
 
 var trackballControls = new THREE.TrackballControls(camera);
 
-var axisHelper = new THREE.AxisHelper(10);
+var axisHelper = new THREE.AxisHelper(100);
 scene.add(axisHelper);
 
 var webGLRenderer = new THREE.WebGLRenderer();
 webGLRenderer.setClearColor(new THREE.Color(0xC7C7C7, 1.0));
 webGLRenderer.setSize(window.innerWidth, window.innerHeight);
 
-
+var interact=true;
 var fpc = false;
 var controls;
 

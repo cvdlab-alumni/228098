@@ -6,13 +6,13 @@ function createMasterDoor(floor){
       floor.add(door);
       door.position.set(4.6,1.3,1.4);
 
-      var door1=createDoor(1,2.2,0.1);
-	  door1.rotation.z=Math.PI;
+      var door1=createDoor(1,2.2,0.1, 1);
+	  door1.rotation.z=-Math.PI/2;
       floor.add(door1);
       door1.position.set(4.3,4.3,1.4);
 
-      var door2=createDoor(1,2.2,0.1);
-      //door2.rotation.z=Math.PI/2;
+      var door2=createDoor(1,2.2,0.1, 1);
+      door2.rotation.z=Math.PI/2;
       floor.add(door2);
       door2.position.set(4.3,5.4,1.4);
 
@@ -35,8 +35,8 @@ function createTerraDoor(floor){
       floor.add(door);
       door.position.set(7,10.5,1.4);
 	  
-      var door1=createDoor(.6,2.2,0.1);
-	  door1.rotation.z=Math.PI;
+      var door1=createDoor(.6,2.2,0.1, 1);
+	  door1.rotation.z=-Math.PI/2;
       floor.add(door1);
       door1.position.set(4.3,5.2,1.4);
 
@@ -54,8 +54,8 @@ function createTerraDoor(floor){
 function createPrimoDoor(floor){
       floor.position.set(0,0,0);
         
-      var door1=createDoor(.6,2.2,0.1);
-	  door1.rotation.z=Math.PI;
+      var door1=createDoor(.6,2.2,0.1, 1);
+	  door1.rotation.z=-Math.PI/2;
       floor.add(door1);
       door1.position.set(4.3,5.2,1.4);
 
@@ -64,8 +64,8 @@ function createPrimoDoor(floor){
       floor.add(door2);
       door2.position.set(5.4,5.2,1.4);
 
-      var door3=createDoor(1,2.2,0.1);
-	  door3.rotation.z=Math.PI;
+      var door3=createDoor(1,2.2,0.1, 1);
+	  door3.rotation.z=-Math.PI/2;
       floor.add(door3);
       door3.position.set(4.3,10.1,1.4);
 
@@ -112,10 +112,10 @@ function createTerraWindows(floor){
       floor.add(window_bagno);
       window_bagno.position.set(7.1,1.3,1.3);
 
-	  floor.finestra_cucina_a= window_cucina.anta1;
-	  floor.finestra_cucina_b= window_cucina.anta2;
-      floor.finestra_camera_a= window_camera.anta1;
-	  floor.finestra_camera_b= window_camera.anta2;
+	  floor.finestra_cucina_a= window_cucina.telaio1;
+	  floor.finestra_cucina_b= window_cucina.telaio2;
+      floor.finestra_camera_a= window_camera.telaio1;
+	  floor.finestra_camera_b= window_camera.telaio2;
 	  floor.finestra_bagno= window_bagno;
 	  
       return floor;
@@ -140,12 +140,12 @@ function createPrimoWindows(floor){
       floor.add(window_bagno);
       window_bagno.position.set(6.2,10.7,1.3);
 	  
-	  floor.finestra_camera1_a= window_camera1.anta1;
-	  floor.finestra_camera1_b= window_camera1.anta2;
-	  floor.finestra_camera2_a= window_camera2.anta1;
-	  floor.finestra_camera2_b= window_camera2.anta2;
-	  floor.finestra_camera3_a= window_camera3.anta1;
-	  floor.finestra_camera3_b= window_camera3.anta2;
+	  floor.finestra_camera1_a= window_camera1.telaio1;
+	  floor.finestra_camera1_b= window_camera1.telaio2;
+	  floor.finestra_camera2_a= window_camera2.telaio1;
+	  floor.finestra_camera2_b= window_camera2.telaio2;
+	  floor.finestra_camera3_a= window_camera3.telaio1;
+	  floor.finestra_camera3_b= window_camera3.telaio2;
 	  floor.finestra_bagno= window_bagno;
 	  	  
       return floor;
@@ -168,7 +168,7 @@ function createMasterFloors(floor){
 
 function createTerraFloors(floor){
 	  
-	  var floor_int1 = createPlane(7.8,13.7, [0.3,4.3, 4.2,4.3, 4.2,6.3, 0.3,6.3],5);
+	  var floor_int1 = createPlane(7.8,13.7, [0.3,4.3, 4.2,4.3, 4.2,6.4, 0.3,6.4],5);
       floor.add(floor_int1);
       floor_int1.position.set(0,1.1,0);
 	  
@@ -178,23 +178,23 @@ function createTerraFloors(floor){
 	  
 	  
 	  
-	  var floor_balcone = createPlane(7.8,1.1, [],7);
+	  var floor_balcone = createPlane(7.8,1.2, [],7);
       floor.add(floor_balcone);
-      floor_balcone.position.set(0,.1,0.3);
+      floor_balcone.position.set(0,0,0.3);
 	  	
       var floor_cucina = createPlane(4.2,4.4, [],8);
       floor.add(floor_cucina);
       floor_cucina.position.set(0,1.1,0.3);
 	  
-	  var floor_bagno_terra = createPlane(3.6,4.3, [0,2.1, 0,4.3, 1.3,4.3, 1.3,2.1],2);
+	  var floor_bagno_terra = createPlane(3.6,4.3, [0,2.2, 0,4.3, 1.3,4.3, 1.3,2.2],2);
       floor.add(floor_bagno_terra);
       floor_bagno_terra.position.set(4.2,1.1,0.3);
 	  
 	  var floor_area = createPlane(1.3,2.2, [],3);
       floor.add(floor_area);
-      floor_area.position.set(4.2,3.2,0.3);
+      floor_area.position.set(4.2,3.3,0.3);
 
-      var floor_sala1 = createPlane(7.8,5.4, [0.3,0, 4.2,0, 4.2,2, 0.3,2], 3);
+      var floor_sala1 = createPlane(7.8,5.4, [0.3,0, 4.2,0, 4.2,2.1, 0.3,2.1], 3);
       floor.add(floor_sala1);
       floor_sala1.position.set(0,5.4,0.3);
 	  
@@ -237,13 +237,13 @@ function createPrimoFloors(floor){
       floor.add(floor_camera1);
       floor_camera1.position.set(0,1.1,0.3);
 	  
-	  var floor_camera2 = createPlane(3.6,4.3, [0,2.1, 0,4.3, 1.3,4.3, 1.3,2.1],1);
+	  var floor_camera2 = createPlane(3.6,4.3, [0,2.2, 0,4.3, 1.3,4.3, 1.3,2.2],1);
       floor.add(floor_camera2);
       floor_camera2.position.set(4.2,1.1,0.3);
 	  
-	  var floor_area = createPlane(1.3,7.6, [],3);
+	  var floor_area = createPlane(1.3,7.5, [],3);
       floor.add(floor_area);
-      floor_area.position.set(4.2,3.2,0.3);
+      floor_area.position.set(4.2,3.3,0.3);
 
       var floor_bagno = createPlane(2.3,5.4, [], 2);
       floor.add(floor_bagno);
@@ -254,7 +254,7 @@ function createPrimoFloors(floor){
       floor_camera3.position.set(0,7.6,0.3);
 	  	 
 	  
-	  var floor_int1 = createPlane(7.8,9.7, [0.3,4.3, 4.2,4.3, 4.2,6.3, 0.3,6.3],5);
+	  var floor_int1 = createPlane(7.8,9.7, [0.3,4.3, 4.2,4.3, 4.2,6.4, 0.3,6.4],5);
       floor.add(floor_int1);
       floor_int1.position.set(0,1.1,0);
 	  
@@ -328,9 +328,9 @@ function createMasterInternalWall(floor){
 	  var muro_sala_3 = createPlane(7.2,2.7, [5.55,2.2, 5.55,0, 6.35,0, 6.35,2.2],9);
       muro_sala_3.rotation.x = Math.PI/2;
       floor.add(muro_sala_3);
-      muro_sala_3.position.set(0.3,13.3,0.3);
+      muro_sala_3.position.set(0.3,13.4,0.3);
 	  
-      var muro_sala_4 = createPlane(13.5,2.7, [],9);
+      var muro_sala_4 = createPlane(12.0,2.7, [],9);
       muro_sala_4.rotation.x = Math.PI/2;
 	  muro_sala_4.rotation.y = Math.PI/2;
       floor.add(muro_sala_4);
@@ -350,20 +350,20 @@ function createMasterInternalWall(floor){
 	  var muro_bagno_1 = createPlane(7.2,2.7, [5.55,2.2, 5.55,0, 6.35,0, 6.35,2.2],11);
       muro_bagno_1.rotation.x = Math.PI/2;
       floor.add(muro_bagno_1);
-      muro_bagno_1.position.set(0.3,13.6,0.3);
+      muro_bagno_1.position.set(0.3,13.7,0.3);
 	  
 	  var muro_bagno_2 = createPlane(7.2,2.7, [5.55,2.2, 5.55,0, 6.35,0, 6.35,2.2],11);
       muro_bagno_2.rotation.x = Math.PI/2;
       floor.add(muro_bagno_2);
-      muro_bagno_2.position.set(0.3,14.6,0.3);
+      muro_bagno_2.position.set(0.3,14.7,0.3);
 	  
-	  var muro_bagno_3 = createPlane(1,2.7, [],11);
+	  var muro_bagno_3 = createPlane(1.1,2.7, [],11);
       muro_bagno_3.rotation.x = Math.PI/2;
 	  muro_bagno_3.rotation.y = Math.PI/2;
       floor.add(muro_bagno_3);
       muro_bagno_3.position.set(0.3,13.6,0.3);
 	  
-	  var muro_bagno_4 = createPlane(1,2.7, [],11);
+	  var muro_bagno_4 = createPlane(1.1,2.7, [],11);
       muro_bagno_4.rotation.x = Math.PI/2;
 	  muro_bagno_4.rotation.y = Math.PI/2;
       floor.add(muro_bagno_4);
@@ -379,7 +379,7 @@ function createMasterInternalWall(floor){
       muro_bagno_6.rotation.x = Math.PI/2;
 	  muro_bagno_6.rotation.y = Math.PI/2;
       floor.add(muro_bagno_6);
-      muro_bagno_6.position.set(4.6,14.7,0.3);
+      muro_bagno_6.position.set(4.6,14.8,0.3);
 	  
 	  var muro_bagno_7 = createPlane(2.9,2.7, [],11);
       muro_bagno_7.rotation.x = Math.PI/2;
@@ -389,7 +389,7 @@ function createMasterInternalWall(floor){
 	  var muro_bagno_8 = createPlane(2.9,2.7, [1.25,2.2, 1.25,0, 2.05,0, 2.05,2.2],11);
       muro_bagno_8.rotation.x = Math.PI/2;
       floor.add(muro_bagno_8);
-      muro_bagno_8.position.set(4.6,14.7,0.3);
+      muro_bagno_8.position.set(4.6,14.8,0.3);
 	  
       return floor;
 }
@@ -399,7 +399,7 @@ function createTerraInternalWalls(floor){
       floor.add(muro_camera_1);
       muro_camera_1.position.set(0.3,1.4,0.3);
 	  
-	  var muro_camera_2 = createPlane(3.9,2.7, [],12);
+	  var muro_camera_2 = createPlane(4,2.7, [],12);
       muro_camera_2.rotation.x = Math.PI/2;
 	  muro_camera_2.rotation.y = Math.PI/2;
       floor.add(muro_camera_2);
@@ -408,54 +408,60 @@ function createTerraInternalWalls(floor){
       var muro_camera_3 = createPlane(3.9,2.7, [],12);
       muro_camera_3.rotation.x = Math.PI/2;
       floor.add(muro_camera_3);
-      muro_camera_3.position.set(0.3,5.3,0.3);
+      muro_camera_3.position.set(0.3,5.4,0.3);
 	  
-	  var muro_camera_4 = createPlane(3.9,2.7, [3.2,2.2, 3.2, 0, 3.8,0, 3.8,2.2],12);
+	  var muro_camera_4 = createPlane(4,2.7, [3.2,2.2, 3.2, 0, 3.8,0, 3.8,2.2],12);
       muro_camera_4.rotation.x = Math.PI/2;
 	  muro_camera_4.rotation.y = Math.PI/2;
       floor.add(muro_camera_4);
       muro_camera_4.position.set(4.2,1.4,0.3);
 	  
-	  var muro_scale_1 = createPlane(3.9,3, [],13);
+	  var muro_scale_1 = createPlane(4,3, [],13);
       muro_scale_1.rotation.x = Math.PI/2;
       floor.add(muro_scale_1);
       muro_scale_1.position.set(0.3,5.5,0);
 	  
-	  var muro_scale_2 = createPlane(3.9,3, [],13);
+	  var muro_scale_2 = createPlane(4,3, [],13);
       muro_scale_2.rotation.x = Math.PI/2;
       floor.add(muro_scale_2);
-      muro_scale_2.position.set(0.3,7.4,0);
+      muro_scale_2.position.set(0.3,7.5,0);
 	  
 	  var muro_scale_3 = createPlane(2,3, [],13);
       muro_scale_3.rotation.x = Math.PI/2;
 	  muro_scale_3.rotation.y = Math.PI/2;
       floor.add(muro_scale_3);
-      muro_scale_3.position.set(0.3,5.4,0);
-	  
+      muro_scale_3.position.set(0.3,5.5,0);
+	 
+	  var muro_scale_4 = createPlane(2,0.5, [],13);
+      muro_scale_4.rotation.x = Math.PI/2;
+	  muro_scale_4.rotation.y = Math.PI/2;
+      floor.add(muro_scale_4);
+      muro_scale_4.position.set(4.2,5.5,2.5);
+	   
 	 	  
 	  var muro_bagno_1 = createPlane(1.2,2.7, [],11);
       muro_bagno_1.rotation.x = Math.PI/2;
       floor.add(muro_bagno_1);
-      muro_bagno_1.position.set(4.3,3.2,0.3);
+      muro_bagno_1.position.set(4.3,3.3,0.3);
 	  
-	  var muro_bagno_2 = createPlane(2.1,2.7, [1.4,2.2, 1.4, 0, 2,0, 2,2.2],11);
+	  var muro_bagno_2 = createPlane(2.1,2.7, [1.3,2.2, 1.3, 0, 1.9,0, 1.9,2.2],11);
       muro_bagno_2.rotation.x = Math.PI/2;
 	  muro_bagno_2.rotation.y = Math.PI/2;
       floor.add(muro_bagno_2);
-      muro_bagno_2.position.set(5.5,3.2,0.3);
+      muro_bagno_2.position.set(5.5,3.3,0.3);
 	  
 	  var muro_bagno_3 = createPlane(2,2.7, [],11);
       muro_bagno_3.rotation.x = Math.PI/2;
       floor.add(muro_bagno_3);
-      muro_bagno_3.position.set(5.5,5.3,0.3);
+      muro_bagno_3.position.set(5.5,5.4,0.3);
 	  
-	  var muro_bagno_4 = createPlane(3.9,2.7, [],11);
+	  var muro_bagno_4 = createPlane(4,2.7, [],11);
       muro_bagno_4.rotation.x = Math.PI/2;
 	  muro_bagno_4.rotation.y = Math.PI/2;
       floor.add(muro_bagno_4);
       muro_bagno_4.position.set(7.5,1.4,0.3);
 	  
-	  var muro_bagno_5 = createPlane(1.8,2.7, [],11);
+	  var muro_bagno_5 = createPlane(1.9,2.7, [],11);
       muro_bagno_5.rotation.x = Math.PI/2;
 	  muro_bagno_5.rotation.y = Math.PI/2;
       floor.add(muro_bagno_5);
@@ -504,13 +510,8 @@ function createTerraInternalWalls(floor){
 	  var muro_sala_8 = createPlane(3.2,2.7, [2.7,0, 2.7,2.2, 1.9,2.2, 1.9,0 ],9);
       muro_sala_8.rotation.x = Math.PI/2;
       floor.add(muro_sala_8);
-      muro_sala_8.position.set(4.3,10.5,0.3);
-	  
-	  var muro_sala_9 = createPlane(2.1,2.7, [],9);
-      muro_sala_9.rotation.x = Math.PI/2;
-      floor.add(muro_sala_9);
-      muro_sala_9.position.set(5.4,5.4,0.3);
-	  
+      muro_sala_8.position.set(4.3,10.5,0.3);	  
+	  	  
 	  var muro_sala_9 = createPlane(2.1,2.7, [],9);
       muro_sala_9.rotation.x = Math.PI/2;
       floor.add(muro_sala_9);
@@ -538,7 +539,7 @@ function createPrimoInternalWalls(floor){
       floor.add(muro_camera1_1);
       muro_camera1_1.position.set(0.3,1.4,0.3);
 	  
-	  var muro_camera1_2 = createPlane(3.9,2.7, [],10);
+	  var muro_camera1_2 = createPlane(4,2.7, [],10);
       muro_camera1_2.rotation.x = Math.PI/2;
 	  muro_camera1_2.rotation.y = Math.PI/2;
       floor.add(muro_camera1_2);
@@ -547,54 +548,60 @@ function createPrimoInternalWalls(floor){
       var muro_camera1_3 = createPlane(3.9,2.7, [],10);
       muro_camera1_3.rotation.x = Math.PI/2;
       floor.add(muro_camera1_3);
-      muro_camera1_3.position.set(0.3,5.3,0.3);
+      muro_camera1_3.position.set(0.3,5.4,0.3);
 	  
-	  var muro_camera1_4 = createPlane(3.9,2.7, [3.2,2.2, 3.2, 0, 3.8,0, 3.8,2.2],10);
+	  var muro_camera1_4 = createPlane(4,2.7, [3.2,2.2, 3.2, 0, 3.8,0, 3.8,2.2],10);
       muro_camera1_4.rotation.x = Math.PI/2;
 	  muro_camera1_4.rotation.y = Math.PI/2;
       floor.add(muro_camera1_4);
       muro_camera1_4.position.set(4.2,1.4,0.3);
 	  
-	  var muro_scale_1 = createPlane(3.9,3, [],13);
+	  var muro_scale_1 = createPlane(4,3, [],13);
       muro_scale_1.rotation.x = Math.PI/2;
       floor.add(muro_scale_1);
       muro_scale_1.position.set(0.3,5.5,0);
 	  
-	  var muro_scale_2 = createPlane(3.9,3, [],13);
+	  var muro_scale_2 = createPlane(4,3, [],13);
       muro_scale_2.rotation.x = Math.PI/2;
       floor.add(muro_scale_2);
-      muro_scale_2.position.set(0.3,7.4,0);
+      muro_scale_2.position.set(0.3,7.5,0);
 	  
 	  var muro_scale_3 = createPlane(2,3, [],13);
       muro_scale_3.rotation.x = Math.PI/2;
 	  muro_scale_3.rotation.y = Math.PI/2;
       floor.add(muro_scale_3);
-      muro_scale_3.position.set(0.3,5.4,0);
+      muro_scale_3.position.set(0.3,5.5,0);
+	 
+	  var muro_scale_4 = createPlane(2,0.5, [],13);
+      muro_scale_4.rotation.x = Math.PI/2;
+	  muro_scale_4.rotation.y = Math.PI/2;
+      floor.add(muro_scale_4);
+      muro_scale_4.position.set(4.2,5.5,2.5);
 	  
 	 	  
-	  var muro_camera2_1 = createPlane(1.2,2.7, [],10);
+	   var muro_camera2_1 = createPlane(1.2,2.7, [],10);
       muro_camera2_1.rotation.x = Math.PI/2;
       floor.add(muro_camera2_1);
-      muro_camera2_1.position.set(4.3,3.2,0.3);
+      muro_camera2_1.position.set(4.3,3.3,0.3);
 	  
-	  var muro_camera2_2 = createPlane(2.1,2.7, [1.4,2.2, 1.4, 0, 2,0, 2,2.2],10);
+	  var muro_camera2_2 = createPlane(2.1,2.7, [1.3,2.2, 1.3, 0, 1.9,0, 1.9,2.2],10);
       muro_camera2_2.rotation.x = Math.PI/2;
 	  muro_camera2_2.rotation.y = Math.PI/2;
       floor.add(muro_camera2_2);
-      muro_camera2_2.position.set(5.5,3.2,0.3);
+      muro_camera2_2.position.set(5.5,3.3,0.3);
 	  
 	  var muro_camera2_3 = createPlane(2,2.7, [],10);
       muro_camera2_3.rotation.x = Math.PI/2;
       floor.add(muro_camera2_3);
-      muro_camera2_3.position.set(5.5,5.3,0.3);
+      muro_camera2_3.position.set(5.5,5.4,0.3);
 	  
-	  var muro_camera2_4 = createPlane(3.9,2.7, [],10);
+	  var muro_camera2_4 = createPlane(4,2.7, [],10);
       muro_camera2_4.rotation.x = Math.PI/2;
 	  muro_camera2_4.rotation.y = Math.PI/2;
       floor.add(muro_camera2_4);
       muro_camera2_4.position.set(7.5,1.4,0.3);
 	  
-	  var muro_camera2_5 = createPlane(1.8,2.7, [],10);
+	  var muro_camera2_5 = createPlane(1.9,2.7, [],10);
       muro_camera2_5.rotation.x = Math.PI/2;
 	  muro_camera2_5.rotation.y = Math.PI/2;
       floor.add(muro_camera2_5);
@@ -604,6 +611,7 @@ function createPrimoInternalWalls(floor){
       muro_camera2_6.rotation.x = Math.PI/2;
       floor.add(muro_camera2_6);
       muro_camera2_6.position.set(4.3,1.4,0.3);
+	
 	
 	  
 	  var muro_sala_1 = createPlane(7.2,2.7, [1.3,2.2, 1.3, 0, 1.9,0, 1.9,2.2,      2.2,2.2, 2.2,0, 4.1,0, 4.1,2.2,	   5.8,2.2, 5.8,0, 6.8,0, 6.8,2.2 ],9);
@@ -751,7 +759,7 @@ function createTerraExternalWalls(floor){
       floor.add(muro_ext_3);
       muro_ext_3.position.set(4.6,10.8,0);
 	  
-	  var muro_ext_4 = createPlane(3,3, [],10,2,2);
+	  var muro_ext_4 = createPlane(3,3, [],14);
       muro_ext_4.rotation.x = Math.PI/2;
 	  muro_ext_4.rotation.y = Math.PI/2;
       floor.add(muro_ext_4);

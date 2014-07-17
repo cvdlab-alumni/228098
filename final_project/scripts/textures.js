@@ -5,7 +5,7 @@ var mat_floor_cucina = createMaterial("textures/cucina/pavimento.jpg");
 var mat_floor_esterno = createMaterial("textures/esterno/pavimento2.jpg");
 var mat_floor_terrazza = createMaterial("textures/esterno/pavimento.png");
 var mat_floor_soffitto = createMaterial("textures/soffitto.jpg");
-var mat_floor_soffitto_esterno = createMaterial("textures/cucina/soffitto.jpg");
+var mat_floor_soffitto_esterno = createMaterial("textures/esterno/soffitto.jpg");
 
 var mat_wall_cucina = createMaterial("./textures/cucina/muro.jpg");
 var texture_wall_cucina = mat_wall_cucina.map;
